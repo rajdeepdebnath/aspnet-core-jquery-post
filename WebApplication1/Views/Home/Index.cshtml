@@ -1,0 +1,32 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+}
+
+<div class="text-center">
+    <h1 class="display-4">Welcome</h1>
+    <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+    <a href="#" id="login_id">click</a>
+</div>
+
+
+@section Scripts{
+
+<script>
+    var loginUser = function (url, object) {
+        //var data = JSON.stringify(object);
+        $.post(url, object, function (res) {
+            if (!res.Message) {
+                alert("/Dashboard/Dashboard");
+            }
+        });
+    }
+
+    $('#login_id').click(function () {
+        var loginModel = new Object();
+        loginModel.Username = "username";
+        loginModel.Password = "password";
+
+        loginUser("Home/Login", loginModel)
+    });
+</script>
+}
